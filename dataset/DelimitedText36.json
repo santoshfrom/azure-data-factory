@@ -1,0 +1,23 @@
+{
+	"name": "DelimitedText36",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_NewADF",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Customer Lookup.csv",
+				"fileSystem": "container2"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
