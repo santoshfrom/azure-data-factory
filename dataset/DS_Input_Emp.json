@@ -1,0 +1,126 @@
+{
+	"name": "DS_Input_Emp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Emp.csv",
+				"folderPath": "source",
+				"fileSystem": "project"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "EEID",
+				"type": "String"
+			},
+			{
+				"name": "Full Name",
+				"type": "String"
+			},
+			{
+				"name": "Job Title",
+				"type": "String"
+			},
+			{
+				"name": "Department",
+				"type": "String"
+			},
+			{
+				"name": "Business Unit",
+				"type": "String"
+			},
+			{
+				"name": "Gender",
+				"type": "String"
+			},
+			{
+				"name": "Ethnicity",
+				"type": "String"
+			},
+			{
+				"name": "Age",
+				"type": "String"
+			},
+			{
+				"name": "Hire Date",
+				"type": "String"
+			},
+			{
+				"name": "Annual Salary",
+				"type": "String"
+			},
+			{
+				"name": "Bonus %",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "Exit Date",
+				"type": "String"
+			},
+			{
+				"name": "Prop_14",
+				"type": "String"
+			},
+			{
+				"name": "Prop_15",
+				"type": "String"
+			},
+			{
+				"name": "Prop_16",
+				"type": "String"
+			},
+			{
+				"name": "Prop_17",
+				"type": "String"
+			},
+			{
+				"name": "Prop_18",
+				"type": "String"
+			},
+			{
+				"name": "Prop_19",
+				"type": "String"
+			},
+			{
+				"name": "Prop_20",
+				"type": "String"
+			},
+			{
+				"name": "Prop_21",
+				"type": "String"
+			},
+			{
+				"name": "Prop_22",
+				"type": "String"
+			},
+			{
+				"name": "Prop_23",
+				"type": "String"
+			},
+			{
+				"name": "Prop_24",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

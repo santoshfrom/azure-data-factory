@@ -2,7 +2,7 @@
 	"name": "DelimitedText6",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -19,7 +19,8 @@
 					"value": "@dataset().fn",
 					"type": "Expression"
 				},
-				"fileSystem": "container2"
+				"folderPath": "OutputMultipleExcelSheet",
+				"fileSystem": "santosh"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

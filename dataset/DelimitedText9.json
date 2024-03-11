@@ -2,17 +2,24 @@
 	"name": "DelimitedText9",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fnm": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "car_data.csv",
-				"folderPath": "input",
-				"fileSystem": "santosh"
+				"fileName": {
+					"value": "@dataset().fnm",
+					"type": "Expression"
+				},
+				"fileSystem": "container2"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

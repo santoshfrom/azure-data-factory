@@ -49,19 +49,19 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "InputExecutionLog",
+						"referenceName": "DelimitedText34",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Output_ExecutionFile",
+						"referenceName": "DelimitedText35",
 						"type": "DatasetReference"
 					}
 				]
 			},
 			{
-				"name": "StoredOnSuccess",
+				"name": "StoredProcOnSuccess",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -80,7 +80,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[sp_UpdateLogTable]",
+					"storedProcedureName": "[dbo].[sp2_UpdateLogTable]",
 					"storedProcedureParameters": {
 						"CopyActivity_End_Time": {
 							"value": {
@@ -194,12 +194,12 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "LS_AzureSLQ_NewADF",
+					"referenceName": "LS_SSMS",
 					"type": "LinkedServiceReference"
 				}
 			},
 			{
-				"name": "StoredOnFailure",
+				"name": "StoredProcFailure",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -218,7 +218,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[sp_UpdateLogTable]",
+					"storedProcedureName": "[dbo].[sp2_UpdateLogTable]",
 					"storedProcedureParameters": {
 						"CopyActivity_End_Time": {
 							"value": {
@@ -256,7 +256,10 @@
 							"type": "String"
 						},
 						"ERROR_Message": {
-							"value": "Jai Khatu Shyam",
+							"value": {
+								"value": "@activity('Copy data1').output.errors",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"Execution_Status": {
@@ -332,13 +335,13 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "LS_AzureSLQ_NewADF",
+					"referenceName": "LS_SSMS",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2024-03-10T03:32:17Z"
+		"lastPublishTime": "2024-02-25T05:31:13Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

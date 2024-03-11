@@ -2,7 +2,7 @@
 	"name": "DelimitedText13",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "container2"
+				"folderPath": "FilterData",
+				"fileSystem": "santosh"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

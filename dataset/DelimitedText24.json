@@ -2,7 +2,7 @@
 	"name": "DelimitedText24",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS2",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,11 +10,12 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "landing"
+				"folderPath": "FileFormat",
+				"fileSystem": "santosh"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []

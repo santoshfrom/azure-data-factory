@@ -1,0 +1,41 @@
+{
+	"name": "AzureSqlTable19",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SurrKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "EID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ENAME",
+				"type": "varchar"
+			},
+			{
+				"name": "LOCATION",
+				"type": "varchar"
+			},
+			{
+				"name": "IsActive",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tb_SCD2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

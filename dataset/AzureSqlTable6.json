@@ -2,26 +2,23 @@
 	"name": "AzureSqlTable6",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_AzureSLQ_NewADF",
+			"referenceName": "LS_SQL",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tn": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [
-			{
-				"name": "TableName",
-				"type": "varchar"
-			},
-			{
-				"name": "watermarkValue",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
-			}
-		],
+		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "watermarktable"
+			"table": {
+				"value": "@dataset().tn",
+				"type": "Expression"
+			}
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

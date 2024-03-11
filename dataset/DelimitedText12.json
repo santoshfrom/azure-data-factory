@@ -2,7 +2,7 @@
 	"name": "DelimitedText12",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,8 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Employee.csv",
-				"folderPath": "input",
+				"folderPath": "samefilename",
 				"fileSystem": "santosh"
 			},
 			"columnDelimiter": ",",

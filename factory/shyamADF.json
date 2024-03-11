@@ -1,0 +1,9 @@
+{
+	"name": "shyamADF",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "532230b0-47ef-4264-8793-bcd09c5dbb65",
+		"tenantId": "8e8abd21-afda-4d8a-b168-7dfb077d8854"
+	}
+}

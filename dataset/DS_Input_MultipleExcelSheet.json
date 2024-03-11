@@ -2,25 +2,26 @@
 	"name": "DS_Input_MultipleExcelSheet",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"ds_sheet": {
-				"type": "string"
+			"sheedindex": {
+				"type": "int"
 			}
 		},
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": {
-				"value": "@dataset().ds_sheet",
-				"type": "Expression"
-			},
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Emp_Training_Data.xlsx",
-				"fileSystem": "container2"
+				"fileName": "Emp.xlsx",
+				"folderPath": "InputMultipleExcelSheet",
+				"fileSystem": "santosh"
+			},
+			"sheetIndex": {
+				"value": "@dataset().sheedindex",
+				"type": "Expression"
 			},
 			"firstRowAsHeader": true
 		},

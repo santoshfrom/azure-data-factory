@@ -2,17 +2,24 @@
 	"name": "DelimitedText30",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ws": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Customer Lookup.csv",
-				"folderPath": "input",
-				"fileSystem": "santosh"
+				"folderPath": {
+					"value": "@substring(replace(dataset().ws, '-', '/'), 0, 10)",
+					"type": "Expression"
+				},
+				"fileSystem": "container1"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

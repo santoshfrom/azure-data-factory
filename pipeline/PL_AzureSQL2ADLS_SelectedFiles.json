@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT name from sys.tables \nwhere name in ('Bercose_sales', 'Emp')",
+						"sqlReaderQuery": "select name from sys.tables\nwhere name in ('car_data.csv', 'Patient_Table.csv')",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -88,7 +88,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "AzureSqlTable4",
+									"referenceName": "AzureSqlTable3",
 									"type": "DatasetReference",
 									"parameters": {
 										"tn": {
@@ -100,7 +100,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DelimitedText3",
+									"referenceName": "DelimitedText10",
 									"type": "DatasetReference",
 									"parameters": {
 										"fn": {
@@ -116,7 +116,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2024-03-09T14:51:54Z"
+		"lastPublishTime": "2024-02-25T03:05:41Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

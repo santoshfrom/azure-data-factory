@@ -2,7 +2,7 @@
 	"name": "DelimitedText32",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,7 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "container2"
+				"fileName": "Encoussnter_Table.csv",
+				"folderPath": "FileFormat",
+				"fileSystem": "santosh"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

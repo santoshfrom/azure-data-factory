@@ -1,0 +1,30 @@
+{
+	"name": "PL_Databricks_NoteBook",
+	"properties": {
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/nancybanni_gmail.com#ext#@nancybannigmail.onmicrosoft.com/FirstNotebook"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_Databricks",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-03-04T10:34:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

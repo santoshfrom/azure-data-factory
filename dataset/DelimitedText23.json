@@ -2,7 +2,7 @@
 	"name": "DelimitedText23",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "EMP",
 				"fileSystem": "container2"
 			},
 			"columnDelimiter": ",",

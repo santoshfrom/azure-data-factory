@@ -2,27 +2,19 @@
 	"name": "DelimitedText29",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS2",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"FolderName": {
-				"type": "string"
-			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": {
-					"value": "@dataset().FolderName",
-					"type": "Expression"
-				}
+				"fileSystem": "container2"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []

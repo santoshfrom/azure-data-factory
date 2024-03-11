@@ -2,7 +2,7 @@
 	"name": "DelimitedText34",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,7 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "container2"
+				"fileName": "Caar_Filter",
+				"folderPath": "FilterData",
+				"fileSystem": "santosh"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -18,5 +20,6 @@
 			"quoteChar": "\""
 		},
 		"schema": []
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

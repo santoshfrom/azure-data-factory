@@ -2,11 +2,11 @@
 	"name": "DelimitedText18",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"ws": {
+			"fn": {
 				"type": "string"
 			}
 		},
@@ -15,11 +15,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": {
-					"value": "@substring(replace(dataset().ws, '-', '/'), 0, 10)",
-					"type": "Expression"
-				},
-				"fileSystem": "container1"
+				"folderPath": "ADLS2ADLS_Custom",
+				"fileSystem": "santosh"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

@@ -58,7 +58,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "DS_Input_MultipleExcelSheet",
+									"referenceName": "Ds_Input_MultiplesHEET",
 									"type": "DatasetReference",
 									"parameters": {
 										"ds_sheet": {
@@ -70,10 +70,10 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DS_Output_MultipleExcelSheet",
+									"referenceName": "DS_Sink_MultipleSheet",
 									"type": "DatasetReference",
 									"parameters": {
-										"fn": {
+										"ds_filename": {
 											"value": "@item()",
 											"type": "Expression"
 										}
@@ -86,7 +86,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2024-03-10T05:37:14Z"
+		"lastPublishTime": "2024-02-23T11:46:35Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

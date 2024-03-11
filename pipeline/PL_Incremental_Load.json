@@ -22,7 +22,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "DS_Incremental_Input",
+						"referenceName": "AzureSqlTable7",
 						"type": "DatasetReference"
 					}
 				}
@@ -46,7 +46,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "AzureSqlTable6",
+						"referenceName": "AzureSqlTable8",
 						"type": "DatasetReference"
 					}
 				}
@@ -80,7 +80,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select* from data_src where LastModifyTime>'@{activity('Lookup2').output.firstRow.watermarkvalue}' and LastModifyTime<='@{activity('Lookup1').output.firstRow.Newwatermarkvalue}'",
+							"value": "select * from data_src where LastModifytime > '@{activity('Lookup2').output.firstRow.watermarkValue}'\nand LastModifyTime <= '@{activity('Lookup1').output.firstRow.Newwatermarkvalue}' ",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -109,13 +109,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_Incremental_Input",
+						"referenceName": "AzureSqlTable9",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DelimitedText20",
+						"referenceName": "DelimitedText36",
 						"type": "DatasetReference"
 					}
 				]
@@ -159,13 +159,13 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "LS_AzureSLQ_NewADF",
+					"referenceName": "LS_SQL",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2024-03-10T05:05:21Z"
+		"lastPublishTime": "2024-02-25T05:49:01Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

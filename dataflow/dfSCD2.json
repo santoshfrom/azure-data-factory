@@ -1,0 +1,159 @@
+{
+	"name": "dfSCD2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText47",
+						"type": "DatasetReference"
+					},
+					"name": "DSInput"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable18",
+						"type": "DatasetReference"
+					},
+					"name": "LookupTarget"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable17",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable19",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "addIsActiveStatus"
+				},
+				{
+					"name": "RenameTargetColumn"
+				},
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "filter1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EID as integer,",
+				"          ENAME as string,",
+				"          Location as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> DSInput",
+				"source(output(",
+				"          SurrKey as integer,",
+				"          EID as integer,",
+				"          ENAME as string,",
+				"          LOCATION as string,",
+				"          IsActive as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> LookupTarget",
+				"DSInput derive(IsActive = 1) ~> addIsActiveStatus",
+				"LookupTarget select(mapColumn(",
+				"          Tg_SurrKey = SurrKey,",
+				"          Tg_EID = EID,",
+				"          Tg_ENAME = ENAME,",
+				"          Tg_LOCATION = LOCATION,",
+				"          Tg_IsActive = IsActive",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> RenameTargetColumn",
+				"DSInput, RenameTargetColumn lookup(EID == Tg_EID,",
+				"     multiple: true,",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 filter(!isNull(Tg_EID)) ~> filter1",
+				"filter1 select(mapColumn(",
+				"          Tg_SurrKey,",
+				"          Tg_EID,",
+				"          Tg_ENAME,",
+				"          Tg_LOCATION,",
+				"          Tg_IsActive",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(Tg_IsActive = 0) ~> derivedColumn1",
+				"derivedColumn1 alterRow(updateIf(1==1)) ~> alterRow1",
+				"addIsActiveStatus sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          SurrKey as integer,",
+				"          EID as integer,",
+				"          ENAME as string,",
+				"          LOCATION as string,",
+				"          IsActive as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 2,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          EID,",
+				"          ENAME,",
+				"          LOCATION = Location,",
+				"          IsActive",
+				"     )) ~> sink1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          SurrKey as integer,",
+				"          EID as integer,",
+				"          ENAME as string,",
+				"          LOCATION as string,",
+				"          IsActive as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['SurrKey'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          SurrKey = Tg_SurrKey,",
+				"          EID = Tg_EID,",
+				"          ENAME = Tg_ENAME,",
+				"          LOCATION = Tg_ENAME,",
+				"          IsActive = Tg_IsActive",
+				"     )) ~> sink2"
+			]
+		}
+	}
+}

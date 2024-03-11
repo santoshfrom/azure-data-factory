@@ -2,7 +2,7 @@
 	"name": "AzureSqlTable5",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_AzureSLQ_NewADF",
+			"referenceName": "LS_SQL",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {

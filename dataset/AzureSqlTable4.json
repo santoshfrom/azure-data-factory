@@ -2,23 +2,15 @@
 	"name": "AzureSqlTable4",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_AzureSLQ_NewADF",
+			"referenceName": "LS_SQL",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"tn": {
-				"type": "string"
-			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": {
-				"value": "@dataset().tn",
-				"type": "Expression"
-			}
+			"table": "car_data.csv"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

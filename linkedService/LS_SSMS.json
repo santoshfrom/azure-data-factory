@@ -1,0 +1,17 @@
+{
+	"name": "LS_SSMS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=True;data source=DESKTOP-B960LFN;initial catalog=Bercose_Restaurant",
+			"userName": "Admin",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyYWYzMGZjNS02YjU2LTRhOWMtOWUxYy02MGJiMDhmZDIxNmUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "selfhosed",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

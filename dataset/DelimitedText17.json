@@ -2,16 +2,25 @@
 	"name": "DelimitedText17",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ADLS_NewADF",
+			"referenceName": "LS_ADLS",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fn": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "BikeCleanedData",
-				"fileSystem": "container2"
+				"fileName": {
+					"value": "@dataset().fn",
+					"type": "Expression"
+				},
+				"folderPath": "input",
+				"fileSystem": "santosh"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

@@ -1,0 +1,72 @@
+{
+	"name": "df_Emp",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_Input_Emp",
+						"type": "DatasetReference"
+					},
+					"name": "InputEmp"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText45",
+						"type": "DatasetReference"
+					},
+					"name": "OutputData"
+				}
+			],
+			"transformations": [
+				{
+					"name": "FilterITDept"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EEID as string,",
+				"          {Full Name} as string,",
+				"          {Job Title} as string,",
+				"          Department as string,",
+				"          {Business Unit} as string,",
+				"          Gender as string,",
+				"          Ethnicity as string,",
+				"          Age as short,",
+				"          {Hire Date} as date,",
+				"          {Annual Salary} as string,",
+				"          {Bonus %} as string,",
+				"          Country as string,",
+				"          City as string,",
+				"          {Exit Date} as date,",
+				"          {_c14} as string,",
+				"          {_c15} as string,",
+				"          {_c16} as string,",
+				"          {_c17} as string,",
+				"          {_c18} as string,",
+				"          {_c19} as string,",
+				"          {_c20} as string,",
+				"          {_c21} as string,",
+				"          {_c22} as string,",
+				"          {_c23} as string,",
+				"          {_c24} as string,",
+				"          {_c25} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> InputEmp",
+				"InputEmp filter(Department=='IT') ~> FilterITDept",
+				"FilterITDept sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> OutputData"
+			]
+		}
+	}
+}
