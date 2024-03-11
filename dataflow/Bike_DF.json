@@ -1,0 +1,85 @@
+{
+	"name": "Bike_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "InputBikeDS",
+						"type": "DatasetReference"
+					},
+					"name": "input"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText17",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SalesCost"
+				},
+				{
+					"name": "Profit"
+				},
+				{
+					"name": "Year"
+				},
+				{
+					"name": "BikeBS"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Region as string,",
+				"          Country as string,",
+				"          Customer as string,",
+				"          {Business Segment} as string,",
+				"          Category as string,",
+				"          Model as string,",
+				"          Color as string,",
+				"          SalesDate as date,",
+				"          ListPrice as double,",
+				"          UnitPrice as double,",
+				"          OrderQty as integer,",
+				"          SalesAmount as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> input",
+				"input derive(Sales = ListPrice*OrderQty,",
+				"          Cost = UnitPrice*OrderQty) ~> SalesCost",
+				"SalesCost derive(Profit = Sales-Cost) ~> Profit",
+				"Profit derive(Year = year(SalesDate)) ~> Year",
+				"Year filter({Business Segment}=='Bikes') ~> BikeBS",
+				"BikeBS sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          Region,",
+				"          Country,",
+				"          Customer,",
+				"          Category,",
+				"          Model,",
+				"          Color,",
+				"          SalesDate,",
+				"          OrderQty,",
+				"          Sales,",
+				"          Cost,",
+				"          Profit,",
+				"          Year",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

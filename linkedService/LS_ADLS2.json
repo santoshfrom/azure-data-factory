@@ -1,0 +1,12 @@
+{
+	"name": "LS_ADLS2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://shyamadls.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEYxRkE3MzRFLTlFNTktNDcyOS1CNjQ1LUFEOUQ1MzYwQ0EzOV82Y2U2NWM0Yy1kM2YxLTQ3OGQtOTU3MS04OThlMzgwMmRjOTAiDQp9"
+		}
+	}
+}

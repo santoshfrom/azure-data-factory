@@ -1,0 +1,9 @@
+{
+	"name": "khatuADF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b0ec58bf-7a73-40d2-a22a-c6e4e206e77c",
+		"tenantId": "8e8abd21-afda-4d8a-b168-7dfb077d8854"
+	}
+}

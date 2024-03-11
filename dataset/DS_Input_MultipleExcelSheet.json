@@ -1,0 +1,30 @@
+{
+	"name": "DS_Input_MultipleExcelSheet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_NewADF",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ds_sheet": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": {
+				"value": "@dataset().ds_sheet",
+				"type": "Expression"
+			},
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Emp_Training_Data.xlsx",
+				"fileSystem": "container2"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

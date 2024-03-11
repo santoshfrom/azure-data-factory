@@ -1,0 +1,124 @@
+{
+	"name": "PL_LogicApp_MailAlert",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DelimitedText21",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DelimitedText22",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "OnSuccess",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-29.centralindia.logic.azure.com:443/workflows/bd5c279f465a4ce59423a76c2fb4d67c/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=pjfr9b2sGxW29rQ81_CyY1qbMANMgkwoG-QQjDl71Nw",
+					"body": {
+						"value": "{\n\"Status\":\"@{activity('Copy data1').output.executionDetails[0].status}\",\n\"PLName\":\"@{pipeline().Pipeline}\",\n\"ExecTime\":\"@{pipeline().TriggerTime}\", \n\"RunId\":\"@{pipeline().RunId}\",\n\"Error\":\"@{activity('Copy data1').output.errors}\"\n}",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "OnFailure",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-29.centralindia.logic.azure.com:443/workflows/bd5c279f465a4ce59423a76c2fb4d67c/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=pjfr9b2sGxW29rQ81_CyY1qbMANMgkwoG-QQjDl71Nw",
+					"body": {
+						"value": "{\n\"Status\":\"@{activity('Copy data1').output.executionDetails[0].status}\",\n\"PLName\":\"@{pipeline().Pipeline}\",\n\"ExecTime\":\"@{pipeline().TriggerTime}\", \n\"RunId\":\"@{pipeline().RunId}\",\n\"Error\":\"Jai Khatu Shyam\"\n}",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-03-10T05:26:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

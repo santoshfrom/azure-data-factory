@@ -1,0 +1,25 @@
+{
+	"name": "DS_InputOnPremSQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_OnPrem",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tb": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tb",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

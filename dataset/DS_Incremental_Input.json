@@ -1,0 +1,33 @@
+{
+	"name": "DS_Incremental_Input",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSLQ_NewADF",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PersonID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "LastModifytime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "data_src"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
